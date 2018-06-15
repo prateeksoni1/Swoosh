@@ -22,7 +22,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".controller.leagueActivity" />
-        <activity android:name=".controller.SkillActivity"></activity>
+        <activity android:name=".controller.SkillActivity" />
+        <activity android:name=".controller.finishActivity"></activity>
     </application>
 
 </manifest>
