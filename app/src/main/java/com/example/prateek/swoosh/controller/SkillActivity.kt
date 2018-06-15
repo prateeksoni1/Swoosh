@@ -5,15 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.prateek.swoosh.utilities.LEAGUE_EXTRA
 import com.example.prateek.swoosh.R
-import com.example.prateek.swoosh.utilities.SKILL_EXTRA
+import com.example.prateek.swoosh.model.Player
+import com.example.prateek.swoosh.utilities.EXTRA_PLAYER
 import kotlinx.android.synthetic.main.activity_skill.*
 
 class SkillActivity : AppCompatActivity() {
 
-    var league = ""
-    var skill = ""
+    lateinit var player: Player
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,15 +20,13 @@ class SkillActivity : AppCompatActivity() {
 
 
 
-        league = intent.getStringExtra(LEAGUE_EXTRA)
-        println(league)
+        player = intent.getParcelableExtra(EXTRA_PLAYER)
 
         finishBtn.setOnClickListener() {
 
-            if(skill != "") {
+            if(player.skill != "") {
                 val finishIntent = Intent(this, finishActivity::class.java)
-                finishIntent.putExtra(LEAGUE_EXTRA, league)
-                finishIntent.putExtra(SKILL_EXTRA, skill)
+                finishIntent.putExtra(EXTRA_PLAYER, player)
                 startActivity(finishIntent)
             } else {
                 Toast.makeText(this, "Please select a skill level", Toast.LENGTH_SHORT).show()
@@ -41,11 +38,11 @@ class SkillActivity : AppCompatActivity() {
 
     fun onBeginnerBtnClicked(view: View) {
         ballerSkillBtn.isChecked = false
-        skill = "beginner"
+        player.skill = "beginner"
     }
 
     fun onBallerBtnClicked(view: View) {
         beginnerSkillBtn.isChecked = false
-        skill = "baller"
+        player.skill = "baller"
     }
 }

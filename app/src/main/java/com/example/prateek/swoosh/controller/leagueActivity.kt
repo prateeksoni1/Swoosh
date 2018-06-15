@@ -5,13 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.prateek.swoosh.utilities.LEAGUE_EXTRA
 import com.example.prateek.swoosh.R
+import com.example.prateek.swoosh.model.Player
+import com.example.prateek.swoosh.utilities.EXTRA_PLAYER
 import kotlinx.android.synthetic.main.activity_league.*
 
 class leagueActivity : AppCompatActivity() {
 
-    var leagueSelected = ""
+    var player = Player("", "")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +25,14 @@ class leagueActivity : AppCompatActivity() {
 
         womensLeagueBtn.isChecked = false
         coedLeagueBtn.isChecked = false
-        leagueSelected = "mens"
+        player.league = "mens"
     }
 
     fun onWomensBtnClicked (view: View) {
 
         mensLeagueBtn.isChecked = false
         coedLeagueBtn.isChecked = false
-        leagueSelected = "womens"
+        player.league = "womens"
 
     }
 
@@ -39,17 +40,17 @@ class leagueActivity : AppCompatActivity() {
 
         mensLeagueBtn.isChecked = false
         womensLeagueBtn.isChecked = true
-        leagueSelected = "coed"
+        player.league = "coed"
 
     }
 
     fun nextBtnClicked(view: View) {
 
-        if(leagueSelected == "") {
+        if(player.league == "") {
             Toast.makeText(this, "Please select a league.", Toast.LENGTH_SHORT).show()
         } else {
             val skillActivity = Intent(this, SkillActivity::class.java)
-            skillActivity.putExtra(LEAGUE_EXTRA, leagueSelected)
+            skillActivity.putExtra(EXTRA_PLAYER, player)
             startActivity(skillActivity)
         }
 
