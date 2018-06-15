@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".welcomeActivity">
+        <activity android:name=".controller.welcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +21,8 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".leagueActivity" />
-        <activity android:name=".SkillActivity"></activity>
+        <activity android:name=".controller.leagueActivity" />
+        <activity android:name=".controller.SkillActivity"></activity>
     </application>
 
 </manifest>
